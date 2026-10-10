@@ -11,7 +11,6 @@ export interface Project {
   category: string;
   tools: string;
   link?: string;
-  video?: string;
   image?: string;
 }
 
@@ -20,37 +19,34 @@ const projects: Project[] = [
     title: "Interactive Developer Portfolio",
     category: "Creative Development",
     tools: "React, TypeScript, CSS, GSAP, Three.js, Vite",
-    image: "/images/projects/portfolio-preview.jpg",
+    image: "/images/work_images/portfolio-preview.jpg",
   },
   {
     title: "DhruvNetra",
     category: "Antarctic Station Digital Twin",
     tools: "React, JavaScript, Tailwind CSS, Three.js",
-    image: "/images/projects/dhruvnetra-preview.jpg",
-    video: "/work_videos/DhruvNetra - The Eye of Polar Region.mp4",
+    image: "/images/work_images/DhruvNetra.png",
   },
   {
     title: "AI Voice Guard",
     category: "AI-Powered Application",
     tools: "HTML, CSS, JavaScript, Python, FastAPI, HuggingFace",
     link: "https://github.com/aadhish-saini/AI-Voice-Guard",
-    image: "/images/projects/ai-voice-guard-preview.jpg",
-    video: "/work_videos/AI Voice Guard.mp4",
+    image: "/images/work_images/AI Voice Guard.png",
   },
   {
     title: "KisaanRakshak",
     category: "Agriculture Technology",
     tools: "React, JavaScript, Tailwind CSS, Prototype",
     link: "https://github.com/yuvrajsingla1701/kisaanrakshak017",
-    image: "/images/projects/kisaanrakshak-preview.jpg",
+    image: "/images/work_images/kisaanrakshak-preview.jpg",
   },
   {
     title: "Library Management System",
     category: "Database Application",
     tools: "HTML, CSS, JavaScript, Python, FastAPI",
     link: "https://github.com/aadhish-saini/Library-Management-System",
-    image: "/images/projects/library-preview.jpg",
-    video: "/work_videos/LibraryOS Management System.mp4",
+    image: "/images/work_images/library-preview.jpg",
   },
 ];
 
@@ -135,7 +131,6 @@ const Work = () => {
               <WorkImage
                 title={project.title}
                 category={project.category}
-                video={project.video}
                 link={project.link}
                 image={project.image}
                 alt={`${project.title} project preview`}

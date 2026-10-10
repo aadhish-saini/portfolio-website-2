@@ -1,31 +1,32 @@
 .about-section {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   position: relative;
   opacity: 1;
   height: auto;
   width: var(--cWidth);
   max-width: var(--cMaxWidth);
   margin: auto;
+  padding: clamp(60px, 10vh, 120px) 0;
+  box-sizing: border-box;
 }
 
 .about-me {
-  padding: 50px 0px;
-  padding-bottom: 0;
-  width: 520px;
-  max-width: calc(100% - 15px);
+  padding: 0;
+  width: 100%;
+  max-width: 560px;
   display: flex;
   flex-direction: column;
 }
 
 .about-me h3 {
-  font-size: 14px;
+  font-size: clamp(13px, 3vw, 15px);
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   font-weight: 600;
   color: var(--color-accent);
-  margin: 0 0 20px 0;
+  margin: 0 0 18px 0;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -34,19 +35,19 @@
 .about-me h3::before {
   content: "";
   display: inline-block;
-  width: 20px;
+  width: 24px;
   height: 2px;
   background-color: var(--color-accent);
   border-radius: 2px;
 }
 
 .about-me p {
-  font-size: 16px;
+  font-size: clamp(15px, 2.2vw, 18px);
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.7;
   letter-spacing: 0.2px;
   color: var(--color-text);
-  margin: 0 0 16px 0;
+  margin: 0 0 18px 0;
 }
 
 .about-resume-btn {
@@ -54,7 +55,8 @@
   align-items: center;
   gap: 10px;
   width: fit-content;
-  padding: 10px 22px;
+  padding: 12px 24px;
+  min-height: 44px;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -65,7 +67,7 @@
   text-decoration: none;
   box-shadow: var(--shadow-card);
   transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .about-resume-btn:hover {
@@ -73,11 +75,11 @@
   border-color: var(--color-accent);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(128, 85, 217, 0.3);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .about-resume-icon {
-  font-size: 17px;
+  font-size: 18px;
   transition: transform 0.3s ease;
 }
 
@@ -85,35 +87,15 @@
   transform: translateY(-1px) scale(1.1);
 }
 
-@media only screen and (min-width: 600px) {
-  .about-section {
-    justify-content: center;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .about-me {
-    width: 520px;
-    max-width: calc(100% - 70px);
-    transform: translateY(0%);
-  }
-  .about-section {
-    opacity: 1;
-  }
-}
-
 @media only screen and (min-width: 1025px) {
   .about-section {
-    width: var(--cWidth);
     justify-content: flex-end;
-    max-width: 1920px;
     height: var(--vh);
     padding: 0px;
-    opacity: 1;
   }
   .about-me {
-    padding: 0px;
     width: 480px;
+    max-width: 480px;
   }
   .about-me p {
     font-size: 18px;
@@ -124,6 +106,7 @@
 @media only screen and (min-width: 1400px) {
   .about-me {
     width: 520px;
+    max-width: 520px;
   }
   .about-me p {
     font-size: 19px;
@@ -131,12 +114,14 @@
   }
 }
 
-@media only screen and (min-width: 1950px) {
+@media only screen and (min-width: 1600px) {
   .about-me {
     width: 560px;
+    max-width: 560px;
   }
   .about-me p {
     font-size: 20px;
     line-height: 1.7;
   }
 }
+

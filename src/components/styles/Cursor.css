@@ -15,6 +15,7 @@
   transition: top 0.3s ease-out, left 0.3s ease-out, width 0.3s ease-out,
     height 0.3s ease-out, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
 .cursor-icons {
   top: 10px;
   left: 10px;
@@ -23,11 +24,13 @@
   border-color: var(--color-accent);
   transition: all 0.5s ease-out, height 0.5s ease-in-out;
 }
+
 .cursor-disable {
   --size: 0px;
   opacity: 0;
 }
-@media only screen and (min-width: 600px) {
+
+@media only screen and (min-width: 1025px) and (hover: hover) and (pointer: fine) {
   .cursor-main {
     --size: 46px;
   }
@@ -36,3 +39,10 @@
     opacity: 0;
   }
 }
+
+@media (pointer: coarse), (hover: none), (max-width: 1024px) {
+  .cursor-main {
+    display: none !important;
+  }
+}
+

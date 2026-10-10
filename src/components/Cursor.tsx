@@ -1,11 +1,31 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./styles/Cursor.css";
 import gsap from "gsap";
 
 const Cursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    const checkTouch = () => {
+      const isTouch =
+        window.matchMedia("(pointer: coarse)").matches ||
+        !window.matchMedia("(hover: hover)").matches ||
+        window.innerWidth <= 1024;
+      setIsTouchDevice(isTouch);
+    };
+
+    checkTouch();
+    window.addEventListener("resize", checkTouch);
+
+    return () => {
+      window.removeEventListener("resize", checkTouch);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isTouchDevice) return;
+
     let hover = false;
     let rafId: number;
     const cursor = cursorRef.current;
@@ -67,9 +87,12 @@ const Cursor = () => {
       document.removeEventListener("mouseover", onMouseOver);
       document.removeEventListener("mouseout", onMouseOut);
     };
-  }, []);
+  }, [isTouchDevice]);
+
+  if (isTouchDevice) return null;
 
   return <div className="cursor-main" ref={cursorRef}></div>;
 };
 
 export default Cursor;
+

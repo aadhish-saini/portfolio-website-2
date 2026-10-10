@@ -1,22 +1,33 @@
 .contact-section {
   margin: auto;
-  padding-bottom: 100px;
-  margin-top: 100px;
+  padding: clamp(60px, 10vh, 120px) 0;
   background-color: transparent;
   color: var(--color-text);
+  box-sizing: border-box;
 }
+
+.contact-container {
+  width: var(--cWidth);
+  max-width: var(--cMaxWidth);
+  margin: auto;
+}
+
 .contact-section h3 {
-  font-size: 60px;
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  line-height: 1.1;
   font-weight: 600;
   text-transform: uppercase;
   margin: 0;
   color: var(--color-text);
 }
+
 .contact-flex {
   display: flex;
   justify-content: space-between;
-  margin-top: 40px;
+  margin-top: clamp(24px, 4vh, 48px);
+  gap: 32px;
 }
+
 .contact-flex h4 {
   font-weight: 600;
   margin: 0;
@@ -25,102 +36,86 @@
   font-size: 14px;
   letter-spacing: 1px;
 }
+
 .contact-box {
   display: flex;
   flex-direction: column;
 }
+
 .contact-flex p {
-  margin-top: 10px;
+  margin-top: 8px;
   margin-bottom: 24px;
-  font-size: 18px;
+  font-size: clamp(15px, 2vw, 18px);
   font-weight: 500;
 }
+
 .contact-flex p a {
   color: var(--color-text);
   transition: color 0.25s ease;
+  word-break: break-all;
 }
+
 .contact-flex p a:hover {
   color: var(--color-accent);
 }
+
 a.contact-social {
-  font-size: 24px;
+  font-size: clamp(16px, 2.5vw, 22px);
   font-weight: 500;
   border-bottom: 1.5px solid var(--color-border);
   color: var(--color-text);
-  padding-bottom: 4px;
-  margin-bottom: 12px;
+  padding: 6px 0;
+  margin-bottom: 10px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   transition: all 0.25s ease;
+  width: fit-content;
 }
+
 a.contact-social:hover {
   color: var(--color-accent);
   border-bottom-color: var(--color-accent);
   transform: translateX(4px);
 }
+
 .contact-box h2 {
   font-weight: 500;
-  font-size: 23px;
+  font-size: clamp(18px, 2.5vw, 22px);
   margin: 0;
   color: var(--color-text);
-  line-height: 32px;
+  line-height: 1.45;
 }
+
 .contact-box h2 > span {
   color: var(--color-accent);
   font-weight: 600;
 }
+
 .contact-box h5 {
-  font-size: 16px;
+  font-size: clamp(14px, 2vw, 16px);
   font-weight: 500;
   line-height: 20px;
   display: flex;
   gap: 8px;
   align-items: center;
   color: var(--color-text-muted);
-  margin-top: 20px;
+  margin-top: 18px;
 }
-@media only screen and (max-width: 1600px) {
-  .contact-section h3 {
-    font-size: 50px;
-  }
-  .contact-box h2 {
-    font-size: 20px;
-  }
-  a.contact-social {
-    font-size: 22px;
-  }
-}
-@media only screen and (max-width: 1300px) {
-  .contact-section h3 {
-    font-size: 40px;
-  }
-  .contact-box h2 {
-    font-size: 18px;
-  }
-  a.contact-social {
-    font-size: 20px;
-  }
-  .contact-flex p {
-    margin-top: 0px;
-  }
-}
-@media only screen and (max-width: 900px) {
+
+@media only screen and (max-width: 1024px) {
   .contact-flex {
     flex-direction: column;
-    gap: 40px;
+    gap: 36px;
   }
   .contact-flex p {
-    margin-bottom: 0px;
+    margin-bottom: 8px;
   }
   .contact-flex h4 {
-    margin-top: 20px;
+    margin-top: 16px;
   }
-  .contact-section {
-    margin-top: 50px;
-    padding-bottom: 50px;
-  }
-  .contact-container {
-    width: calc(100% - 25px);
+  .contact-flex h4:first-child {
+    margin-top: 0;
   }
 }
+

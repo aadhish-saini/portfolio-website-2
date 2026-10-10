@@ -128,6 +128,9 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
 
 const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
+  const [cameraFov, setCameraFov] = useState(() =>
+    typeof window !== "undefined" && window.innerWidth < 768 ? 44 : 32.5
+  );
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
@@ -154,12 +157,17 @@ const TechStack = () => {
       }, 1000);
     };
 
+    const handleResize = () => {
+      setCameraFov(window.innerWidth < 768 ? 44 : 32.5);
+    };
+
     const headerLinks = document.querySelectorAll(".header a");
     headerLinks.forEach((elem) => {
       elem.addEventListener("click", onHeaderClick);
     });
 
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
     handleScroll();
     ScrollTrigger.refresh();
 
@@ -170,6 +178,7 @@ const TechStack = () => {
         elem.removeEventListener("click", onHeaderClick);
       });
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -195,9 +204,10 @@ const TechStack = () => {
       <Canvas
         shadows
         gl={{ alpha: true, stencil: false, depth: false, antialias: true }}
-        camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
+        camera={{ position: [0, 0, 20], fov: cameraFov, near: 1, far: 100 }}
         onCreated={(state) => (state.gl.toneMappingExposure = isDark ? 1.3 : 1.2)}
         className="tech-canvas"
+        style={{ touchAction: "pan-y" }}
       >
         <ambientLight intensity={isDark ? 1.1 : 1.5} />
         <spotLight
@@ -242,3 +252,4 @@ const TechStack = () => {
 };
 
 export default TechStack;
+
