@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+
+:root,
+[data-theme="light"] {
+  font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  color-scheme: light;
+
+  /* Premium Light Theme Tokens */
+  --color-background: #F8F7FC;
+  --color-surface-secondary: #F0EDF8;
+  --color-surface: #FFFFFF;
+  --color-text: #211A2E;
+  --color-text-muted: #6F687B;
+  --color-accent: #8055D9;
+  --color-accent-soft: #B69AF5;
+  --color-border: #E2DDEC;
+  --color-hover: #EEE7FB;
+  --color-success: #43866B;
+
+  /* Shadows */
+  --shadow-soft: 0 10px 30px rgba(128, 85, 217, 0.08);
+  --shadow-card: 0 8px 24px rgba(33, 26, 46, 0.05), 0 2px 6px rgba(128, 85, 217, 0.04);
+  --shadow-card-hover: 0 16px 40px rgba(128, 85, 217, 0.16), 0 4px 12px rgba(128, 85, 217, 0.06);
+  --shadow-glow: 0 0 35px rgba(182, 154, 245, 0.35);
+
+  /* Visual Glow Orbs & Rim */
+  --orb-bg: #E8DFF8;
+  --orb-shadow: inset -40px 30px 60px rgba(182, 154, 245, 0.35);
+  --orb-opacity: 0.75;
+  --rim-bg: #E2D3FA;
+  --rim-shadow: inset 40px 25px 60px 0px rgba(128, 85, 217, 0.25);
+
+  /* Cursor */
+  --cursor-bg: rgba(128, 85, 217, 0.16);
+  --cursor-border: rgba(128, 85, 217, 0.45);
+  --cursor-shadow: 0px 0px 25px 0px rgba(182, 154, 245, 0.4);
+
+  /* Legacy aliases */
+  --accentColor: var(--color-accent);
+  --backgroundColor: var(--color-background);
+
+  color: var(--color-text);
+  background-color: var(--color-background);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+
+  --vh: 100vh;
+  --vh: 100svh;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Premium Dark Theme Tokens */
+  --color-background: #0D0A10;
+  --color-surface-secondary: #17111F;
+  --color-surface: #1C1526;
+  --color-text: #F4F0FA;
+  --color-text-muted: #B6ADBF;
+  --color-accent: #B69AF5;
+  --color-accent-soft: #8055D9;
+  --color-border: #382B48;
+  --color-hover: #261D33;
+  --color-success: #52B788;
+
+  /* Shadows */
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(182, 154, 245, 0.04);
+  --shadow-card-hover: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(182, 154, 245, 0.2);
+  --shadow-glow: 0 0 45px rgba(182, 154, 245, 0.5);
+
+  /* Visual Glow Orbs & Rim */
+  --orb-bg: #301B48;
+  --orb-shadow: inset -50px 40px 60px rgba(128, 85, 217, 0.5);
+  --orb-opacity: 0.85;
+  --rim-bg: #442266;
+  --rim-shadow: inset 50px 30px 70px 0px rgba(182, 154, 245, 0.4);
+
+  /* Cursor */
+  --cursor-bg: rgba(182, 154, 245, 0.25);
+  --cursor-border: rgba(182, 154, 245, 0.6);
+  --cursor-shadow: 0px 0px 30px 0px rgba(182, 154, 245, 0.5);
+
+  /* Legacy aliases */
+  --accentColor: var(--color-accent);
+  --backgroundColor: var(--color-background);
+
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Geist", sans-serif;
+  color: var(--color-text);
+}
+
+body {
+  overflow: hidden;
+  margin: 0;
+  height: auto;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  flex-grow: 1;
+  --cWidth: calc(100% - 30px);
+  --cMaxWidth: 1920px;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Smooth theme transition */
+body,
+.main-body,
+.header,
+.landing-section,
+.about-section,
+.whatIDO,
+.what-content,
+.career-section,
+.work-section,
+.work-image-in,
+.contact-section,
+.social-icons a,
+.resume-button {
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+  transition: color 0.25s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+main {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.main-active {
+  opacity: 0;
+  animation: fadeIn 1s 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+.main-body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--color-background);
+}
+
+.container-main {
+  width: 100%;
+  margin: auto;
+  position: relative;
+}
+
+.container1 {
+  width: var(--cWidth);
+  height: var(--vh);
+  margin: auto;
+  position: relative;
+}
+
+.split-line {
+  overflow: hidden;
+}
+
+.split-h2 {
+  overflow: hidden;
+  display: flex;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
+.techstack {
+  width: 100%;
+  position: relative;
+  height: var(--vh);
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 0px;
+  overflow: hidden;
+  z-index: 2;
+  background-color: transparent;
+}
+
+.techstack h2 {
+  font-size: 80px;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 120px;
+  left: 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  z-index: 1;
+  pointer-events: none;
+  color: var(--color-text);
+  letter-spacing: 2px;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    --cWidth: 94%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .techstack h2 {
+    font-size: 40px;
+  }
+}
