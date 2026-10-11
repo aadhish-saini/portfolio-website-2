@@ -26,3 +26,5 @@ dist-ssr
 
 backup/
 .env
+
+public/work_videos/*.mp4
