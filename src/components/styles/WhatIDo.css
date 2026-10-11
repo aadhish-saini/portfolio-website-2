@@ -22,6 +22,10 @@
   z-index: 9;
 }
 
+.desk-scene-wrapper {
+  display: none;
+}
+
 .what-box h2 {
   font-size: clamp(2.4rem, 5vw, 5rem);
   line-height: 1.1;
@@ -411,23 +415,58 @@
 @media only screen and (min-width: 1025px) {
   .whatIDO {
     height: 100vh;
+    min-height: 700px;
     padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
   }
+  .what-box.what-heading-box,
   .what-box:first-child {
-    justify-content: flex-end;
-  }
-  .what-box:last-child {
+    width: 28%;
+    min-width: 240px;
+    max-width: 380px;
     justify-content: flex-start;
+    padding-left: clamp(30px, 4.5vw, 80px);
+    box-sizing: border-box;
+    position: relative;
+    z-index: 20;
+  }
+  .what-box.what-heading-box h2,
+  .what-box:first-child h2 {
+    margin: 0;
+    text-align: left;
+    font-size: clamp(2.4rem, 4.4vw, 4.6rem);
+    line-height: 1.05;
+  }
+  .desk-scene-wrapper {
+    display: block;
+    width: 34%;
+    height: 80vh;
+    max-height: 720px;
+    pointer-events: none;
+    position: relative;
+  }
+  .what-box.what-skills-box,
+  .what-box:last-child {
+    width: 36%;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 20;
   }
   .what-box-in {
+    margin-left: 0;
     height: 570px;
-    width: 480px;
+    width: 460px;
+    max-width: 100%;
   }
 }
 
 @media only screen and (min-width: 1600px) {
   .what-box-in {
-    width: 520px;
+    width: 500px;
     height: 600px;
   }
 }

@@ -339,13 +339,16 @@ h2.landing-info-h2 {
     width: 100%;
     max-width: 100%;
     transform: none;
-    z-index: 11;
+    z-index: 5;
     position: fixed;
-    pointer-events: inherit;
+    pointer-events: none;
   }
   .character-model::after,
   .character-model::before {
     display: none;
+  }
+  .character-hover {
+    pointer-events: auto;
   }
   .character-rim {
     width: 400px;

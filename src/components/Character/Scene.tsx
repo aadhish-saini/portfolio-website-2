@@ -68,7 +68,10 @@ const Scene = () => {
             mixer = animations.mixer;
             const character = gltf.scene;
             scene.add(character);
-            headBone = character.getObjectByName("spine006") || null;
+            headBone =
+              character.getObjectByName("spine006") ||
+              character.getObjectByName("spine.006") ||
+              null;
             screenLight = character.getObjectByName("screenlight") || null;
             progress.loaded().then(() => {
               if (!isMounted) return;
@@ -120,6 +123,10 @@ const Scene = () => {
       const animate = () => {
         if (!isMounted) return;
         animationFrameId = requestAnimationFrame(animate);
+        const delta = clock.getDelta();
+        if (mixer) {
+          mixer.update(delta);
+        }
         if (headBone) {
           handleHeadRotation(
             headBone,
@@ -130,10 +137,6 @@ const Scene = () => {
             THREE.MathUtils.lerp
           );
           light.setPointLight(screenLight);
-        }
-        const delta = clock.getDelta();
-        if (mixer) {
-          mixer.update(delta);
         }
         renderer.render(scene, camera);
       };

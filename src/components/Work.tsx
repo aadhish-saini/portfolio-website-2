@@ -19,12 +19,14 @@ const projects: Project[] = [
     title: "Interactive Developer Portfolio",
     category: "Creative Development",
     tools: "React, TypeScript, CSS, GSAP, Three.js, Vite",
+    link: "https://github.com/aadhish-saini/portfolio-website-2",
     image: "/images/work_images/portfolio-preview.jpg",
   },
   {
     title: "DhruvNetra",
     category: "Antarctic Station Digital Twin",
     tools: "React, JavaScript, Tailwind CSS, Three.js",
+    link: "https://github.com/teamnexovanta122529/DhruvNetra",
     image: "/images/work_images/DhruvNetra.png",
   },
   {

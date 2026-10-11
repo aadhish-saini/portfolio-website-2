@@ -10,7 +10,7 @@ const WhatIDo = () => {
 
   return (
     <div className="whatIDO" id="what-i-do">
-      <div className="what-box">
+      <div className="what-box what-heading-box">
         <h2 className="title">
           W<span className="hat-h2">HAT</span>
           <div>
@@ -18,7 +18,8 @@ const WhatIDo = () => {
           </div>
         </h2>
       </div>
-      <div className="what-box">
+      <div className="desk-scene-wrapper" aria-hidden="true"></div>
+      <div className="what-box what-skills-box">
         <div className="what-box-in">
           <div className="what-border2">
             <svg width="100%">

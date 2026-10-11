@@ -13,12 +13,19 @@
   z-index: 10;
 }
 
+.about-scene-container,
+.about-visual-slot {
+  display: none;
+}
+
 .about-me {
   padding: 0;
   width: 100%;
   max-width: 560px;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 20;
 }
 
 .about-me h3 {
@@ -69,6 +76,9 @@
   box-shadow: var(--shadow-card);
   transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   margin-top: 8px;
+  position: relative;
+  z-index: 25;
+  pointer-events: auto;
 }
 
 .about-resume-btn:hover {
@@ -90,13 +100,30 @@
 
 @media only screen and (min-width: 1025px) {
   .about-section {
-    justify-content: flex-end;
-    height: var(--vh);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    min-height: 700px;
     padding: 0px;
+    position: relative;
+    z-index: 10;
+  }
+  .about-scene-container,
+  .about-visual-slot {
+    display: block;
+    width: 44%;
+    height: 75vh;
+    max-height: 680px;
+    position: relative;
+    pointer-events: none;
   }
   .about-me {
-    width: 480px;
-    max-width: 480px;
+    width: 48%;
+    max-width: 500px;
+    margin-right: 2%;
+    position: relative;
+    z-index: 20;
   }
   .about-me p {
     font-size: 18px;

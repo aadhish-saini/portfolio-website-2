@@ -43,40 +43,26 @@ export const handleHeadRotation = (
   lerp: (x: number, y: number, t: number) => number
 ) => {
   if (!headBone) return;
-  if (window.scrollY < 200) {
-    const maxRotation = Math.PI / 6;
-    headBone.rotation.y = lerp(
-      headBone.rotation.y,
-      mouseX * maxRotation,
-      interpolationY
-    );
-    const minRotationX = -0.3;
-    const maxRotationX = 0.4;
-    if (mouseY > minRotationX) {
-      if (mouseY < maxRotationX) {
-        headBone.rotation.x = lerp(
-          headBone.rotation.x,
-          -mouseY - 0.5 * maxRotation,
-          interpolationX
-        );
-      } else {
-        headBone.rotation.x = lerp(
-          headBone.rotation.x,
-          -maxRotation - 0.5 * maxRotation,
-          interpolationX
-        );
-      }
-    } else {
-      headBone.rotation.x = lerp(
-        headBone.rotation.x,
-        -minRotationX - 0.5 * maxRotation,
-        interpolationX
-      );
-    }
+
+  const whatIDoEl = document.getElementById("what-i-do");
+  const inWhatIDo =
+    whatIDoEl && window.scrollY >= whatIDoEl.offsetTop - 350;
+
+  if (inWhatIDo) {
+    // When in What I Do (seated typing at desk), head naturally looks at laptop screen
+    const targetX = 0.12 - mouseY * 0.08;
+    const targetY = mouseX * 0.15;
+    headBone.rotation.x = lerp(headBone.rotation.x, targetX, 0.05);
+    headBone.rotation.y = lerp(headBone.rotation.y, targetY, 0.05);
+    headBone.rotation.z = lerp(headBone.rotation.z, 0, 0.05);
   } else {
-    if (window.innerWidth > 1024) {
-      headBone.rotation.x = lerp(headBone.rotation.x, -0.4, 0.03);
-      headBone.rotation.y = lerp(headBone.rotation.y, -0.3, 0.03);
-    }
+    // Hero and About Me: Natural forward-facing eye-level gaze with subtle cursor following
+    // Idle/center (mouseX=0, mouseY=0) -> targetX = 0.02 (forward, eye-contact), targetY = 0
+    const targetX = 0.02 - mouseY * 0.15;
+    const targetY = mouseX * 0.28;
+
+    headBone.rotation.x = lerp(headBone.rotation.x, targetX, interpolationX);
+    headBone.rotation.y = lerp(headBone.rotation.y, targetY, interpolationY);
+    headBone.rotation.z = lerp(headBone.rotation.z, 0, interpolationX);
   }
 };

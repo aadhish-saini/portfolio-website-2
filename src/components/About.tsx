@@ -4,6 +4,7 @@ import { TbNotes } from "react-icons/tb";
 const About = () => {
   return (
     <div className="about-section" id="about">
+      <div className="about-scene-container" aria-hidden="true"></div>
       <div className="about-me">
         <h3 className="title">ABOUT ME</h3>
         <p className="para">
