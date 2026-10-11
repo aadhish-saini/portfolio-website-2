@@ -70,7 +70,7 @@ The primary purpose of this website is to serve as a high-impact digital presenc
 - Real career milestones and experience records
 - Personal contact information and verified social links
 - Modular structured data files (`src/data/projects.ts`, `src/data/skills.ts`, etc.)
-- Replacement of trial GSAP plugins (`gsap-trial`) with production-licensed solutions or Lenis
+- Official standard GSAP package (`gsap` 3.15+) with ScrollSmoother and SplitText
 - WebGL fallback UI for devices without hardware acceleration
 
 ---
@@ -183,8 +183,7 @@ src/
 - **@react-three/rapier 1.5.0**: Real-time rigid-body 3D physics engine for interactive tech spheres.
 - **@react-three/drei 9.120.4**: Three.js helper abstractions (HDR Environment loader).
 - **@react-three/postprocessing 2.16.3**: Post-processing effects (N8AO ambient occlusion).
-- **GSAP 3.12.7 & @gsap/react 2.1.1**: Core animation engine, timelines, and React integration hook (`useGSAP`).
-- **GSAP Trial Plugins (`gsap-trial` 3.12.7)**: `ScrollSmoother` for smooth momentum scrolling and `SplitText` for typography stagger animations.
+- **GSAP 3.15.0 & @gsap/react 2.1.1**: Core animation engine, timelines, React integration hook (`useGSAP`), plus official `ScrollSmoother` for smooth momentum scrolling and `SplitText` for typography stagger animations.
 - **React Icons 5.3.0**: Vector icon sets (`react-icons/md`, `react-icons/fa6`, `react-icons/tb`).
 - **React Fast Marquee 1.6.5**: Smooth infinite text marquee on the preloader screen.
 - **Web Crypto API**: Native browser cryptography for client-side AES-CBC 3D asset decryption.
@@ -210,9 +209,8 @@ src/
 | `@react-three/drei` | `^9.120.4` | Helper components for React Three Fiber | `src/components/TechStack.tsx` (`Environment`) |
 | `@react-three/postprocessing` | `^2.16.3` | Screen-space postprocessing for R3F | `src/components/TechStack.tsx` (`EffectComposer`, `N8AO`) |
 | `@react-three/cannon` | `^6.6.0` | Alternative Cannon physics engine (installed) | `package.json` |
-| `gsap` | `^3.12.7` | Core animation platform and ScrollTrigger | `src/components/utils/*`, `Work.tsx`, `Cursor.tsx` |
+| `gsap` | `^3.15.0` | Core animation platform, ScrollTrigger, ScrollSmoother, SplitText | `src/components/utils/*`, `Navbar.tsx`, `Work.tsx`, `Cursor.tsx` |
 | `@gsap/react` | `^2.1.1` | React hook for scoped GSAP animations (`useGSAP`) | `src/components/Work.tsx` |
-| `gsap-trial` | `^3.12.7` | Trial club plugins: `ScrollSmoother`, `SplitText` | `src/components/Navbar.tsx`, `splitText.ts`, `initialFX.ts` |
 | `react-icons` | `^5.3.0` | Icon components (Material Design, FontAwesome 6, Tabler) | `src/components/Contact.tsx`, `SocialIcons.tsx`, `WorkImage.tsx` |
 | `react-fast-marquee` | `^1.6.5` | Infinite scrolling marquee banner | `src/components/Loading.tsx` |
 | `@vercel/analytics` | `^1.4.1` | Vercel analytics tracking | `package.json` |
@@ -596,7 +594,7 @@ The layout adapts across five primary device tiers using standard CSS media quer
 | **1** | **Hardcoded Dev Path in Video Fetch** | `fetch('src/assets/${props.video}')` hardcodes Vite dev server path and breaks in production bundle | `src/components/WorkImage.tsx:17` | **High** | Move video assets to `/public/videos/` and fetch via absolute URL `/videos/...` |
 | **2** | **Cursor Animation Frame Memory Leak** | `requestAnimationFrame(loop)` runs indefinitely without storing or cancelling RAF ID on unmount | `src/components/Cursor.tsx:16` | **Medium** | Store RAF ID in a ref and call `cancelAnimationFrame(id)` in `useEffect` cleanup |
 | **3** | **Social Icons Animation Frame Memory Leak** | `requestAnimationFrame(updatePosition)` is spawned for each icon without cleanup cancellation | `src/components/SocialIcons.tsx:33` | **Medium** | Store animation frame IDs and cancel them on component unmount |
-| **4** | **`gsap-trial` Dependency in Production** | `ScrollSmoother` and `SplitText` are imported from trial package (`gsap-trial`), which is restricted to non-production use | `src/components/Navbar.tsx`, `splitText.ts`, `initialFX.ts` | **High** | Upgrade to official GSAP Club license or migrate to open-source Lenis smooth scroll |
+| **4** | **`gsap-trial` Dependency in Production** | Resolved: migrated to official `gsap` package with standard `ScrollSmoother` and `SplitText` | `src/components/Navbar.tsx`, `splitText.ts`, `initialFX.ts` | **Resolved** | Upgraded to official `gsap` package (v3.15.0+) |
 | **5** | **Template Identity & Placeholder Strings** | Author name, contact email, phone number, and project slots still display template baseline values | `Landing.tsx`, `About.tsx`, `Career.tsx`, `Work.tsx`, `Contact.tsx`, `index.html` | **High** | Replace placeholder content and metadata with Aadhish Saini's real data |
 | **6** | **Missing WebGL Context Fallback** | No fallback UI or graceful degradation if user browser disables WebGL or lacks hardware support | `src/components/Character/Scene.tsx`, `TechStack.tsx` | **Medium** | Add WebGL capability check and render a 2D fallback visual when unsupported |
 | **7** | **Empty Character Exports File** | `exports.ts` in the Character component directory is a 0-byte file | `src/components/Character/exports.ts` | **Low** | Populate with modular exports or delete the unused file |
@@ -646,7 +644,7 @@ The layout adapts across five primary device tiers using standard CSS media quer
 4. **Real Career Experience**: Accurate employment history, hackathon achievements, and education milestones.
 5. **Personal Contact Information**: Verified email, phone, and active social media profiles.
 6. **Modular Data Layer**: Separate TypeScript data files (`src/data/projects.ts`, `src/data/skills.ts`, `src/data/experience.ts`).
-7. **Production Scroll Architecture**: Migration from `gsap-trial` to production-licensed GSAP Club plugins or open-source Lenis.
+7. **Production Scroll Architecture**: Official GSAP `ScrollSmoother` and `ScrollTrigger` implementation.
 8. **WebGL Fallback UI**: Graceful degradation to 2D illustration on devices without hardware WebGL support.
 
 ---

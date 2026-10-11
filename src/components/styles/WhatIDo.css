@@ -413,6 +413,12 @@
     height: 100vh;
     padding: 0;
   }
+  .what-box:first-child {
+    justify-content: flex-end;
+  }
+  .what-box:last-child {
+    justify-content: flex-start;
+  }
   .what-box-in {
     height: 570px;
     width: 480px;

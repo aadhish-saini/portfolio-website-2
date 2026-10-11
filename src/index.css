@@ -129,7 +129,7 @@ body {
   color: var(--color-text);
   flex-grow: 1;
   --cWidth: calc(100% - 32px);
-  --cMaxWidth: 1600px;
+  --cMaxWidth: 1920px;
   max-width: 100vw;
   overflow-x: hidden;
 }
